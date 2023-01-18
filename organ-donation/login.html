@@ -1,0 +1,155 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "organ_donation";
+$link = mysqli_connect($servername, $username, $password, $dbname);
+$con = mysqli_select_db($link, $dbname);
+
+if ($con) {
+	echo (" ");
+} else {
+	die("connection failed" . mysqli_connect_error());
+}
+?>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Login</title>
+</head>
+<script type="text/javascript">
+	function validate() {
+		var user_id = document.getElementById("user_id");
+
+		if (password.value.length < 8) {
+			alert("Password consists of atleast 8 characters");
+			password.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+<style type="text/css">
+	
+
+	#loginarea {
+		background-color: #ffe4c4;
+		width: 30%;
+		margin: auto;
+		border-radius: 25px;
+		border: 2px solid blue;
+		margin-top: 100px;
+		background-color: rgba(0, 0, 0, 0.2);
+		box-shadow: inset -2px -2px rgba(0, 0, 0, 0.5);
+		padding: 40px;
+		font-family: sans-serif;
+		font-size: 20px;
+		color: white;
+	}
+
+	html {
+		background: url(img/bg4.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+	}
+
+	#submit {
+		border-radius: 5px;
+		background-color: rgba(0, 0, 0, 0);
+		padding: 7px 7px 7px 7px;
+		box-shadow: inset -1px -1px rgba(0, 0, 0, 0.5);
+		font-family: "Comic Sans MS", cursive, sans-serif;
+		font-size: 17px;
+		margin: auto;
+		margin-top: 20px;
+		display: block;
+		color: white;
+	}
+
+	#logintext {
+		text-align: center;
+	}
+
+	.data {
+		color: white;
+	}
+</style>
+
+<body>
+	<!-- <?php include("header.php") ?> -->
+	<div id="loginarea">
+		<form id="login" action="login.php" onsubmit="return validate()" method="post" name="login">
+			<div id="logintext">Login!</div><br /><br />
+			<table>
+				<tr>
+					<td>
+						<div class="data">Enter user_name:</div>
+					</td>
+					<td><input type="text" id="user_name" size="30" maxlength="30" name="user_name" /></td>
+				</tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr>
+					<td>
+						<div class="data">Enter Password:</div>
+					</td>
+					<td><input type="password" id="password" size="30" maxlength="30" name="password" /></td>
+				</tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+				<tr></tr>
+			</table>
+			<INPUT TYPE="Submit" value="Submit" name="submit" id="submit" class="button">
+
+		</form>
+	</div>
+</body>
+
+</html>
+
+<?php
+session_start();
+if (isset($_POST['submit'])) {
+	$conn = mysqli_connect("localhost", "root", "", "organ_donation");
+	if (!$conn) {
+		echo "<script type='text/javascript'>alert('Database failed');</script>";
+		die('Could not connect: ' . mysqli_connect_error());
+	}
+	$user_name = $_POST['user_name'];
+	$password = $_POST['password'];
+	$sql = "SELECT * FROM user WHERE user_name = '$user_name' AND password = '$password';";
+	$sql_result = mysqli_query($conn, $sql) or die('request "Could not execute SQL query" ' . $sql);
+	$user = mysqli_fetch_assoc($sql_result);
+	if (!empty($user)) {
+		$_SESSION['user_info'] = $user['user_name'];
+		$message = 'Logged in successfully ';
+		header('Location: home.php');
+		//echo '<a href="home.php"></a>';
+	} else {
+		$message = 'Wrong user_name or password.';
+	}
+	echo "<script type='text/javascript'>alert('$message');</script>";
+}
+?>
