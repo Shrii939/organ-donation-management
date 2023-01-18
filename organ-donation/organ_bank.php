@@ -53,6 +53,28 @@ if ($con) {
             border: 1px solid #f1f1f1;
             margin-bottom: 25px;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+
+
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #f5f5f5;
+            margin-right: 20px;
+        }
+
+        .nav-items a {
+            text-decoration: none;
+            color: #000;
+            padding: 35px 20px;
+        }
 
         .registerbtn {
             background-color: #4CAF50;
@@ -93,6 +115,16 @@ if ($con) {
 </head>
 
 <body>
+<header class="header">
+        <nav class="nav-items">
+            <a href="home.php">Home</a>
+            <a href="donor.php">Add Donor</a>
+            <a href="organ.php">Donate</a>
+            <a href="organ_bank.php">Tested</a>
+            <a href="ordersshow.php">Orders</a>
+            <a href="adduser.php">USERS</a>
+        </nav>
+    </header>
     <form name="form2" action="" method="post">
         <div class="container">
             <center>
@@ -161,6 +193,7 @@ $res = mysqli_query($link, "select * from trigger1");
 
 
         }
+      
 
         input[type=submit] {
             background-color: #191970;
@@ -181,6 +214,7 @@ $res = mysqli_query($link, "select * from trigger1");
 </head>
 
 <body>
+
     <div class="show">
         <table align="center" border="5px" style="width:800px; line-height:30px;">
             <tr>

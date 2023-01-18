@@ -4,8 +4,7 @@ $username = "root";
 $password = "";
 $dbname = "organ_donation";
 $link = mysqli_connect($servername, $username, $password, $dbname);
-$con = mysqli_select_db($link, $dbname);
-$res = mysqli_query($link, "select * from trigger1");
+// $res = mysqli_query($link, "select * from trigger1");
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,6 +78,28 @@ $res = mysqli_query($link, "select * from trigger1");
             cursor: pointer;
             margin-top: 6px;
         }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+
+
+
+        .nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #f5f5f5;
+            margin-right: 20px;
+        }
+
+        .nav-items a {
+            text-decoration: none;
+            color: #000;
+            padding: 35px 20px;
+        }
 
         input[type=submit]:hover {
             background-color: #45a049;
@@ -88,6 +109,17 @@ $res = mysqli_query($link, "select * from trigger1");
 </head>
 
 <body>
+<header class="header">
+        <nav class="nav-items">
+            <a href="home.php">Home</a>
+            <a href="donor.php">Add Donor</a>
+            <a href="organ.php">Donate</a>
+            <a href="organ_bank.php">Tested</a>
+            <a href="ordersshow.php">Orders</a>
+            <a href="adduser.php">USERS</a>
+        </nav>
+    </header>
+    
     <form name="form2" action="" method="post">
         <div class="container">
             <center>
@@ -106,8 +138,8 @@ $res = mysqli_query($link, "select * from trigger1");
             <input type="text" name="organ_id" placeholder="organ id" size="15" />
             <br>
             <div class="order">
-                <a href="home.php"><input type="submit" name="save" value="submit"> </a>
-
+                <!-- <a href="home.php"><input type="submit" name="save" value="submit"> </a> -->
+                <button class="btn" name="save">submit</button>
             </div>
     </form>
 </body>
@@ -115,8 +147,11 @@ $res = mysqli_query($link, "select * from trigger1");
 </html>
 <?php
 if (isset($_POST["save"])) {
+    echo "hiet";   
     mysqli_query($link, "insert into orders values('$_POST[hosp_name]','$_POST[adress]','$_POST[ph_no]','$_POST[date]','$_POST[organ_id]')");
     echo "submited";
+    mysqli_query($link, "DELETE FROM trigger1 WHERE organ_id='$_POST[organ_id]'");
+    header("Location: home.php");
 }
 
 

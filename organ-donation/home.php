@@ -103,6 +103,7 @@
 <body>
     <header class="header">
         <nav class="nav-items">
+            <a href="home.php">Home</a>
             <a href="donor.php">Add Donor</a>
             <a href="organ.php">Donate</a>
             <a href="organ_bank.php">Tested</a>
