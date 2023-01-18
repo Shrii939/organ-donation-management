@@ -100,7 +100,7 @@ if ($con) {
             </center>
             <hr>
             <label> organ_id </label>
-            <input type="text" name="organ_id" placeholder="organ id" size="5" />
+            <input type="text" name="organ_id" placeholder="organ id" size="5" required/>
             <label> test_details </label>
             <input type="text" name="test_details" placeholder="test details" size="50" />
             <label> Organ type </label>
