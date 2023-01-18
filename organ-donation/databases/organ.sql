@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2023 at 12:52 PM
+-- Generation Time: Jan 18, 2023 at 04:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `organ` (
-  `organ_id` int(5) NOT NULL,
-  `donor_id` int(4) NOT NULL,
-  `organ_type` varchar(30) DEFAULT NULL,
+  `organ_id` varchar(5) NOT NULL,
+  `donor_id` varchar(5) NOT NULL,
+  `organ_type` varchar(25) NOT NULL,
   `details` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,10 +39,11 @@ CREATE TABLE `organ` (
 --
 
 INSERT INTO `organ` (`organ_id`, `donor_id`, `organ_type`, `details`) VALUES
-(101, 1, 'kidney', 'ok tests done and we have taken the oegan of the donor'),
-(103, 3, 'eye', 'ok'),
-(105, 3, 'heart', 'test details ok'),
-(202, 2, 'brain', 'tested ok');
+('', '', '', ''),
+('101', '1', 'eye', 'he is healthy to donate kidney'),
+('104', '2', 'kidney', 'no'),
+('105', '4', 'liver', 'ok'),
+('106', '3', 'brain', 'ok');
 
 --
 -- Indexes for dumped tables
@@ -52,7 +53,7 @@ INSERT INTO `organ` (`organ_id`, `donor_id`, `organ_type`, `details`) VALUES
 -- Indexes for table `organ`
 --
 ALTER TABLE `organ`
-  ADD PRIMARY KEY (`organ_id`,`donor_id`),
+  ADD PRIMARY KEY (`organ_id`,`donor_id`,`organ_type`),
   ADD KEY `donor_id` (`donor_id`);
 
 --
