@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2023 at 12:51 PM
+-- Generation Time: Jan 18, 2023 at 04:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `donor` (
-  `donor_id` int(4) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `donor_id` varchar(5) NOT NULL,
+  `name` varchar(30) NOT NULL,
   `address` varchar(50) NOT NULL,
-  `contact` varchar(10) NOT NULL,
-  `details` varchar(250) NOT NULL
+  `contact` bigint(20) DEFAULT NULL,
+  `details` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,9 +40,11 @@ CREATE TABLE `donor` (
 --
 
 INSERT INTO `donor` (`donor_id`, `name`, `address`, `contact`, `details`) VALUES
-(1, 'Chandana', '9876543210', 'thekkatte', 'ok'),
-(2, 'dd', '0123654789', 'kumbhashi', 'fsdghmjmk,'),
-(3, 'HARRY', 'Dehli', '4563210789', 'healthy and fit');
+('', '', '', 0, ''),
+('1', 'dd', 'banglore', 9876543210, 'ok'),
+('2', 'ganesh', 'kundapur', 6540123987, 'adhar card number'),
+('3', 'peter', 'kumbhashi', 9652387410, 'ok'),
+('4', 'daniel', 'bantakal', 8569471230, 'adhar number-');
 
 --
 -- Indexes for dumped tables
